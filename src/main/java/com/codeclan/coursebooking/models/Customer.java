@@ -3,6 +3,7 @@ package com.codeclan.coursebooking.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,19 +12,44 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String name;
-
+    @Column
     private String town;
-
-    private int starRating;
+    @Column
+    private int age;
 
     @JsonIgnoreProperties("customer")
     @OneToMany(mappedBy = "customer")
-    private List<Booking> bookings;
+    private List<Booking> bookings = new ArrayList<>();
 
-    public Customer(String name, String town, int starRating) {
+    public Customer(String name, String town, int age) {
         this.name = name;
         this.town = town;
-        this.starRating = starRating;
+        this.age = age;
+    }
+
+    public Customer() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
     }
 }

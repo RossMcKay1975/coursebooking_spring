@@ -1,13 +1,12 @@
 package com.codeclan.coursebooking.repositories;
 
-import com.codeclan.coursebooking.models.Booking;
+import com.codeclan.coursebooking.models.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BookingRepository extends JpaRepository<Booking, Long> {
-
-    List<Booking> findByDate(String date);
+public interface CourseRepository extends JpaRepository<Course, Long> {
+    List<Course> findByRating(int rating);
 }
